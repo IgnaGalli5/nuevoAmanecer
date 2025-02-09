@@ -6,7 +6,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: #c4cef1;
   color: #000000;
 }
 
@@ -30,7 +30,7 @@ nav ul {
   margin: 20px 0 0;
 }
 
-/* Estilos actualizados para la navegación */
+/*#region Estilos actualizados para la navegación */
 nav {
   background-color: #e6f3ff; /* Fondo azul pastel claro */
   padding: 10px 0;
@@ -81,7 +81,7 @@ nav ul li a:hover {
   }
 }
 
-
+/*#endregion*/
 main {
   flex: 1;
   padding: 20px;
@@ -111,12 +111,18 @@ main {
 .youtube-container,
 .instagram-container {
   position: relative;
-  width: 100%;
-  max-width: 400px;
-  height: 250px;
+  display: inline-block; /* Cambiado para ajustar al tamaño de la imagen */
+  width: auto; /* El contenedor toma el ancho de la imagen */
+  height: auto; /* El contenedor toma la altura de la imagen */
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.youtube-container img,
+.instagram-container img {
+  width: 100%; /* La imagen ocupa todo el espacio del contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
 }
 
 .youtube-container::before,
@@ -127,18 +133,10 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background-size:contain ;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   transition: transform 0.3s ease;
-}
-
-.youtube-container::before {
-  background-image: url("img/youtube-photo.png");
-}
-
-.instagram-container::before {
-  background-image: url("img/insta-Photoroom.png");
 }
 
 .youtube-container:hover::before,
@@ -154,12 +152,10 @@ main {
   z-index: 2;
 }
 
-
-.follow-button a
-{
+.follow-button a,
+.subscribe-button a {
   display: inline-block;
   padding: 10px 20px;
-  background-color: rgba(74, 142, 243, 0.9);
   color: #333;
   text-decoration: none;
   border-radius: 5px;
@@ -167,17 +163,12 @@ main {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.follow-button a {
+  background-color: rgba(74, 142, 243, 0.9);
+}
 
-.subscribe-button a
- {
-  display: inline-block;
-  padding: 10px 20px;
+.subscribe-button a {
   background-color: rgba(255, 86, 86, 0.9);
-  color: #333;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .subscribe-button a:hover,
@@ -195,10 +186,10 @@ main {
 
   .youtube-container,
   .instagram-container {
-    width: 100%;
-    max-width: 100%;
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
   }
 }
+
 
 
 
