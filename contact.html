@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Iglesia Nuevo Amanecer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div id="banner">
+            <img src="/placeholder.svg?height=150&width=800" alt="Banner Iglesia Nuevo Amanecer">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="about.html">Quiénes Somos</a></li>
+                <li><a href="calendar.html">Calendario</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="courses.html">Cursos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Contacto</h1>
+        <form id="contactForm">
+            <label for="name">Nombre y Apellido:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">Teléfono de contacto:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="reason">Motivo de contacto:</label>
+            <select id="reason" name="reason" required>
+                <option value="">Seleccione una opción</option>
+                <option value="oracion">Motivo de oración</option>
+                <option value="eventos">Preguntas sobre eventos</option>
+                <option value="otros">Otros</option>
+            </select>
+
+            <label for="message">Mensaje:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/nuevoamanecer" target="_blank">Instagram</a>
+            <a href="https://www.youtube.com/nuevoamanecer" target="_blank">YouTube</a>
+        </div>
+        <div class="contact-link">
+            <a href="contact.html">Contacto</a>
+        </div>
+        <div class="legal">
+            &copy; 2025 Iglesia Nuevo Amanecer. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
