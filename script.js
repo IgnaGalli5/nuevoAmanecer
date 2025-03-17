@@ -136,6 +136,97 @@ document.addEventListener("DOMContentLoaded", () => {
     pulseElements.forEach((element) => {
       element.classList.add("pulse")
     })
+  
+    // Carrusel de anuncios
+    const carousel = document.querySelector(".carousel")
+    const slides = document.querySelectorAll(".carousel-slide")
+    const prevBtn = document.querySelector(".prev-btn")
+    const nextBtn = document.querySelector(".next-btn")
+    const indicators = document.querySelectorAll(".carousel-indicator")
+  
+    let currentIndex = 0
+    const slideCount = slides.length
+  
+    // Configurar el carrusel inicialmente
+    function setupCarousel() {
+      if (!carousel) return // Si no existe el carrusel, salir
+  
+      // Mostrar el primer slide
+      updateCarousel()
+  
+      // Iniciar autoplay
+      startAutoplay()
+    }
+  
+    // Actualizar la posición del carrusel
+    function updateCarousel() {
+      if (!carousel) return
+  
+      carousel.style.transform = `translateX(-${currentIndex * 100}%)`
+  
+      // Actualizar indicadores
+      indicators.forEach((indicator, index) => {
+        if (index === currentIndex) {
+          indicator.classList.add("active")
+        } else {
+          indicator.classList.remove("active")
+        }
+      })
+    }
+  
+    // Ir al slide anterior
+    function prevSlide() {
+      currentIndex = currentIndex === 0 ? slideCount - 1 : currentIndex - 1
+      updateCarousel()
+      resetAutoplay()
+    }
+  
+    // Ir al siguiente slide
+    function nextSlide() {
+      currentIndex = currentIndex === slideCount - 1 ? 0 : currentIndex + 1
+      updateCarousel()
+      resetAutoplay()
+    }
+  
+    // Ir a un slide específico
+    function goToSlide(index) {
+      currentIndex = index
+      updateCarousel()
+      resetAutoplay()
+    }
+  
+    // Variables para el autoplay
+    let autoplayInterval
+    const autoplayDelay = 5000 // 5 segundos
+  
+    // Iniciar autoplay
+    function startAutoplay() {
+      autoplayInterval = setInterval(nextSlide, autoplayDelay)
+    }
+  
+    // Reiniciar autoplay
+    function resetAutoplay() {
+      clearInterval(autoplayInterval)
+      startAutoplay()
+    }
+  
+    // Configurar eventos
+    if (prevBtn) prevBtn.addEventListener("click", prevSlide)
+    if (nextBtn) nextBtn.addEventListener("click", nextSlide)
+  
+    // Configurar indicadores
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener("click", () => goToSlide(index))
+    })
+  
+    // Pausar autoplay al pasar el mouse sobre el carrusel
+    if (carousel) {
+      carousel.addEventListener("mouseenter", () => clearInterval(autoplayInterval))
+      carousel.addEventListener("mouseleave", startAutoplay)
+    }
+  
+    // Inicializar carrusel
+    setupCarousel()
   })
   
   
