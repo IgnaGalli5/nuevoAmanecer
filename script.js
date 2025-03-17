@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
             navbar.classList.remove('sticky');
         }
     });
-    
-    // WhatsApp form submission
+
+    // WhatsApp form submission with validation
     const prayerForm = document.getElementById('prayer-form');
     
     prayerForm.addEventListener('submit', function(e) {
@@ -69,11 +69,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const phone = document.getElementById('phone').value;
         const prayer = document.getElementById('prayer').value;
         
+        // Validate inputs
+        if (!name || !phone || !prayer) {
+            alert('Todos los campos son obligatorios.');
+            return;
+        }
+        
         // Format the message for WhatsApp
         const message = `Hola, soy ${name}. Mi motivo de oración es: ${prayer}`;
         
         // Create WhatsApp URL - this assumes the church has a WhatsApp number
-        // Replace the placeholder number with the actual church WhatsApp number
         const churchPhone = "+5491112345678"; // Replace with actual number
         const whatsappURL = `https://wa.me/${churchPhone}?text=${encodeURIComponent(message)}`;
         
